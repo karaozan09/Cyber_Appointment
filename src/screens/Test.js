@@ -2,14 +2,16 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const Home = () => {
+const Test = () => {
   return (
-    <View>
-      <Text>Home</Text>
+    <View 
+    style={{backgroundColor:'pink'}}
+    >
+      <Text>Hello</Text>
     </View>
   )
 }
 
-export default Home
+export default Test
 
 const styles = StyleSheet.create({})
