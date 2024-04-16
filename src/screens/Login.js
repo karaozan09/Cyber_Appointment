@@ -1,89 +1,72 @@
 /* eslint-disable prettier/prettier */
-import { Dimensions, Image, StyleSheet, Text, TextInput, View , Button } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TextInput, Image, Button } from 'react-native';
 
+const Login = () => {
 
-export default function Login_screen({navigation}){
-  
-  const e = 'zum@123'
-  const p = '1234' 
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const[email, setEmail] = useState('')
-  const[password, setPassword] = useState('')
-
-  function login(){
-    if(email==e && password==p){
-      navigation.navigate('Home')
-    }else{
-      alert('error'),
-      setEmail(''),
-      setPassword('')
-    }
-  }
-
-  return(
-    <view>
+  const handleLogin = () => {
+    // Burada giriş işlemleri gerçekleştirilebilir
+    console.log('Email:', email);
+    console.log('Password:', password);
+  };
+  return (
+      <View style={styles.container}>
+      <Text style={styles.label}>Email</Text>
       <TextInput
-      placeholder='Enter Your Email'
-      value={email}
-      onChangeText={setEmail}
-      alignItems='center'
-      justifyContent='center'
-      style={{backgroundColor :'pink'}}
+        style={styles.input}
+        placeholder="Email adresinizi girin"
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+        autoCapitalize="none"
       />
-      <TextInput 
-      placeholder='Enter Your Password'
-      value={password}
-      onChangeText={setPassword} 
-      alignItems='center'
-      justifyContent='center'
-      style={{backgroundColor :'pink'}}
+      <Text style={styles.label}>Şifre</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="Şifrenizi girin"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
       />
-      <Button
-      title='login'
-      onPress={() => {login()}}
-      
-      />
-    </view>
-  )
-}
+      <Button title="Giriş Yap" onPress={handleLogin} />
+      </View>
+  );
+};
 
+export default Login;
 
+const styles = StyleSheet.create({
+  container: {
+    // flexDirection:'row',
+    // justifyContent:'space-between',
+    // backgroundColor:'#E8C6F4',
+    // width:20,
+    // height:10,
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 20,
+    alignItems:'center',
 
-// const winWidth = Dimensions.get("window").width;
-// const winHeight = Dimensions.get("window").height
-// const Login = () => {
+  },
+  label: {
+    color: '#771DA1',
+    fontSize: 18,
+    marginBottom: 5,
+    // fontWeight:500,
+    // paddingHorizontal: "winWidth*0.03"
+},
+  input: {
+    // color: 'purple',
+    // fontWeight: 500,
+    width: '100%',
+    height: 40,
+    borderColor: 'pink',
+    borderWidth: 1,
+    marginBottom: 20,
+    paddingHorizontal: 10,
+},
+});
 
-//   //const [input , setInput] =useState("")
-//   function handleNameInput (val){
-//     // console.log("got values ", input)
-//     // setInput(val)
-//   }
-//   return (
-//     <View>
-//        <View style={{flexDirection:'row',justifyContent:'space-between',backgroundColor:"#E8C6F4", 
-//        width:winWidth, height:winWidth*0.2,
-//        alignItems:'center'}}>
-          
-//            <Text 
-//            style={{color:"#771DA1", 
-//            fontSize:winWidth*0.07, 
-//            fontWeight:500,
-//             paddingHorizontal:winWidth*0.03
-//            }}> ZÜMRA EWL </Text>
-//            <Image  source={require("../assets/images/4.png")} style={{
-//             height:winWidth*0.2,
-//             width:winWidth*0.2,
-//             borderRadius:winWidth*0.2,
-//             resizeMode:'contain'
-
-//            }}/>
-//        </View>
-       
-//     </View>
-//   )
-// }
-
-// //export default Login
-
-// const styles = StyleSheet.create({})
