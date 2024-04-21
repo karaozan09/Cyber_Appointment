@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Image, Button } from 'react-native';
+import { auth } from '@react-native-firebase/auth';
 
 const Login = () => {
 
@@ -9,9 +10,18 @@ const Login = () => {
 
   const handleLogin = () => {
     // Burada giriş işlemleri gerçekleştirilebilir
-    console.log('Email:', email);
-    console.log('Password:', password);
+    auth()
+    .signInWithEmailAndPassword(email, password)
+    .then(() => {
+      console.log('Kullanıcı giriş yaptı!');
+    })
+    .catch(error => {
+      console.error('Giriş başarısız: ', error);
+    });
+    // console.log('Email:', email);
+    // console.log('Password:', password);
   };
+
   return (
       <View style={styles.container}>
       <Text style={styles.label}>Email</Text>
@@ -31,12 +41,16 @@ const Login = () => {
         onChangeText={setPassword}
         secureTextEntry
       />
-      <Button title="Giriş Yap" onPress={handleLogin} />
-      </View>
+      <Button title="Giriş Yap" onPress={handleLogin} textStyle={styles.loginButtonText}/>
+      <Button title="Üye Ol" textStyle={styles.loginButtonText}/> {/* burada üye ol butonuna tıklayınca signup sayfasına gitsin. */}
+      </View> 
   );
 };
 
+
+
 export default Login;
+
 
 const styles = StyleSheet.create({
   container: {
@@ -47,7 +61,7 @@ const styles = StyleSheet.create({
     // height:10,
     flex: 1,
     justifyContent: 'center',
-    paddingHorizontal: 20,
+    paddingHorizontal: 70,
     alignItems:'center',
 
   },
@@ -55,7 +69,7 @@ const styles = StyleSheet.create({
     color: '#771DA1',
     fontSize: 18,
     marginBottom: 5,
-    // fontWeight:500,
+    //fontWeight:500,
     // paddingHorizontal: "winWidth*0.03"
 },
   input: {
@@ -67,6 +81,19 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 20,
     paddingHorizontal: 10,
+    borderRadius: 5, 
 },
+  button: {
+    color: 'purple',
+    margin: 50,
+    paddingHorizontal: 30,
+    paddingVertical: 10,
+    borderRadius: 5,
+},
+  loginButtonText: {
+    color: 'purple',
+    fontSize: 20,
+},
+
 });
 
