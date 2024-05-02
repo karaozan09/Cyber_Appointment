@@ -6,11 +6,11 @@ const winWidth = Dimensions.get("window").width;
 const winHeight = Dimensions.get("window").height;
 const Home = () => {
 
-  const [input , setInput] =useState("")
-  function handleNameInput (val){
-     console.log("got values ", input)
-     setInput(val)
-  }
+  // const [input , setInput] = useState("");
+  // function handleNameInput (val){
+  //    console.log('got values', input);
+  //    setInput(val);
+
   return (
     <View>
        <View style={{flexDirection:'row',justifyContent:'space-between',backgroundColor:"#E8C6F4", 
@@ -32,9 +32,9 @@ const Home = () => {
            }}/>
        </View> 
     </View>
-  )
-}
+  )};
 
-export default Home
 
-const styles = StyleSheet.create({})
+export default Home;
+
+const styles = StyleSheet.create({});
