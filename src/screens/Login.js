@@ -1,13 +1,12 @@
 /* eslint-disable prettier/prettier */
-import { Dimensions, Image, StyleSheet, Text, View, TextInput,Button, alert, TouchableOpacity } from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, View, TextInput, Alert, TouchableOpacity } from 'react-native';
 import React,{useState} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 
-const winWidth = Dimensions.get("window").width;
-const winHeight = Dimensions.get("window").height;
-
+const winWidth = Dimensions.get('window').width;
+const winHeight = Dimensions.get('window').height;
 
 
 const Login = ({navigation}) => {
@@ -23,7 +22,7 @@ const Login = ({navigation}) => {
     }
     else {
       navigation.navigate('Home');
-    };
+    }
   }
 
   function signup (){
@@ -34,11 +33,15 @@ const Login = ({navigation}) => {
   return (
     <SafeAreaView style={styles.continer}>
     <View style={styles.view_style}>
+      <View style={{width:winWidth * 0.75}}>
       <Text style={styles.text_title1}>Zümra Ewl</Text>
-      <Text style={styles.text_title3}>Güvenliğin eğlenceli hali</Text>
-      <View ><Image source={require("../assets/images/4.png")} style={styles.img}/></View>
+      <Text style={styles.text_title3}>Güvenliğin Eğlenceli Hali</Text>
+      </View>
+     <View style={{width:winWidth * 0.25}}>
+     <Image source={require('../assets/images/4.png')} style={styles.img1}/>
+     </View>
     </View>
-    <View style={styles.view_style2}>
+    <View style={styles.ortaview}>
       <TextInput
         style={styles.text_title2}
         placeholder="Email adresinizi girin"
@@ -54,14 +57,14 @@ const Login = ({navigation}) => {
               onChangeText={setPassword}
               secureTextEntry
       />
-    </View>
-    <View style={styles.view_style3}>
     {/* <Button title="Giriş Yap" onPress={() => {login()}} style={styles}/> */}
-    <TouchableOpacity style={styles.buton} onPress={()=>{login()}}><Text>Giriş Yap</Text></TouchableOpacity>
-    </View>
-    <View style={styles.view_style3}>
+    <TouchableOpacity style={styles.buton} onPress={()=>{login()}}><Text style={styles.butontext}>Giriş Yap</Text></TouchableOpacity>
     {/* <Button title ="Kayıt Ol" onPress={() => {signup()}} /> */}
-    <TouchableOpacity style={styles.buton} onPress={() => {signup()}}><Text>Kayıt Ol</Text></TouchableOpacity>
+    <TouchableOpacity style={styles.buton} onPress={() => {signup()}}><Text style={styles.butontext}>Kayıt Ol</Text></TouchableOpacity>
+    </View>
+
+    <View style={styles.altview}>
+    <Image resizeMode="stretch" source={require('../assets/images/mobilresim.png')} style={styles.img2}/>
     </View>
     </SafeAreaView>
   );
@@ -75,29 +78,25 @@ const styles = StyleSheet.create({
         backgroundColor:'white',
     },
     view_style:{
-      flex:1,
       backgroundColor:'#E8C6F4',
-      justifyContent:'space-between',
+      justifyContent:'space-evenly',
       marginBottom:50,
+      height:winWidth * 0.3,
+      width:winWidth,
+      flexDirection:'row',
+      padding:winWidth * 0.05,
     },
-    view_style2:{
-      flex:5,
+    ortaview:{
+      flex:4,
       backgroundColor:'white',
       justifyContent:'center',
-      marginLeft:20,
-      marginRight:20,
       borderWidth:1,
-      borderColor:'gray',
+      borderColor:'white',
       borderRadius:10,
-      padding:10,
+      padding:20,
+      margin:20,
+      paddingBottom:60,
 
-    },
-    view_style3:{
-      justifyContent:'center',
-      flex:1,
-      textAlign:'center',
-      margin:10,
-      padding: 5,
     },
     text_title1:{
       fontSize: 40,
@@ -105,6 +104,8 @@ const styles = StyleSheet.create({
       color:'#771DA1',
       fontWeight:'bold',
       marginLeft:10,
+
+
     },
     text_title2:{
      width: '100%',
@@ -120,26 +121,45 @@ const styles = StyleSheet.create({
       fontSize:20,
       textAlign:'center',
       color:'#771DA1',
-      fontWeight:'bold',
+     fontWeight:'bold',
       fontStyle:'italic',
       marginBottom:10,
-    },
+        },
     buton:{
-      textAlign:'center',
-      fontStyle:'italic',
-      color: 'purple',
-      backgroundColor:'pink',
-      marginLeft: 10,
-      marginRight: 10,
+      alignItems:'center',
+      backgroundColor:'#771DA1',
+      marginLeft: 70,
+      marginRight: 70,
       borderRadius:5,
       padding:10,
+      margin: 10,
+    },
+    butontext:{
+      fontSize:18,
+      textAlign:'center',
+      color:'white',
+    },
+    img1:{
+      alignItems:'center',
+      borderRadius: winWidth * 0.22,
+      height:winWidth * 0.22,
+      width:winWidth * 0.22,
+      alignSelf:'flex-end',
+    },
+    altview:{
+      height:winWidth * 0.5,
+      flex:1,
+      justifyContent:'flex-end',
+      backgroundColor:'red',
 
     },
-    img:{
-      height:winWidth * 0.2,
-      width:winWidth * 0.2,
-      borderRadius:winWidth * 0.2,
-      resizeMode:'contain',
+    img2:{
+      width:winWidth ,
+      justifyContent:'center',
+      height:winWidth * 0.5,
+      alignItems:'center',
+      alignSelf:'center',
+
     },
 });
 
