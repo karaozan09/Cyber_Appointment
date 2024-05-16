@@ -5,7 +5,10 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 const winWidth = Dimensions.get('window').width;
 const winHeight = Dimensions.get('window').height;
-const Home = () => {
+const Home = ({navigation}) => {
+  function hizmet (){
+    navigation.navigate('Hizmetler');
+}
 
   // const [input , setInput] = useState("");
   // function handleNameInput (val){
@@ -26,11 +29,11 @@ const Home = () => {
        <Text style={{fontSize: 25, position: 'absolute', bottom: 15, color: 'white'}}>Şirketler</Text>
        </View>
        <View style={styles.vieworta}>
-       <TouchableOpacity style={styles.şirketler1}><Text style={styles.şirketler2}>Şirket 1</Text><Text style={styles.şirketler3}> özellikleridsfkailjksd</Text></TouchableOpacity>
-       <TouchableOpacity style={styles.şirketler1}><Text style={styles.şirketler2}>Şirket 1</Text><Text style={styles.şirketler3}> özellikleridsfkailjksd</Text></TouchableOpacity>
-       <TouchableOpacity style={styles.şirketler1}><Text style={styles.şirketler2}>Şirket 1</Text><Text style={styles.şirketler3}> özellikleridsfkailjksd</Text></TouchableOpacity>
-       <TouchableOpacity style={styles.şirketler1}><Text style={styles.şirketler2}>Şirket 1</Text><Text style={styles.şirketler3}> özellikleridsfkailjksd</Text></TouchableOpacity>
-       <TouchableOpacity style={styles.şirketler1}><Text style={styles.şirketler2}>Şirket 1</Text><Text style={styles.şirketler3}> özellikleridsfkailjksd</Text></TouchableOpacity>
+       <TouchableOpacity style={styles.şirketler1} onPress={()=>{hizmet()}}><Text style={styles.şirketler2}>Şirket 1</Text><Text style={styles.şirketler3}> özellikleridsfkailjksd</Text></TouchableOpacity>
+       <TouchableOpacity style={styles.şirketler1} onPress={()=>{hizmet()}}><Text style={styles.şirketler2}>Şirket 1</Text><Text style={styles.şirketler3}> özellikleridsfkailjksd</Text></TouchableOpacity>
+       <TouchableOpacity style={styles.şirketler1} onPress={()=>{hizmet()}}><Text style={styles.şirketler2}>Şirket 1</Text><Text style={styles.şirketler3}> özellikleridsfkailjksd</Text></TouchableOpacity>
+       <TouchableOpacity style={styles.şirketler1} onPress={()=>{hizmet()}}><Text style={styles.şirketler2}>Şirket 1</Text><Text style={styles.şirketler3}> özellikleridsfkailjksd</Text></TouchableOpacity>
+       <TouchableOpacity style={styles.şirketler1} onPress={()=>{hizmet()}}><Text style={styles.şirketler2}>Şirket 1</Text><Text style={styles.şirketler3}> özellikleridsfkailjksd</Text></TouchableOpacity>
        </View>
        <View style={styles.altview}>
        <Image resizeMode="stretch" source={require('../assets/images/butonlar.png')} style={styles.img2}/>
@@ -115,7 +118,6 @@ const styles = StyleSheet.create({
     justifyContent:'center',
   },
   şirketler1:{
-    borderRadius:40,
     padding:10,
   },
   şirketler2:{

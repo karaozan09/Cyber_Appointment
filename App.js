@@ -9,6 +9,8 @@ import firebase from '@react-native-firebase/app';
 import Login  from './src/screens/Login';
 import Home from './src/screens/Home';
 import Signup from './src/screens/Signup';
+import Hizmetler from './src/screens/Hizmetler';
+import Icerik from './src/screens/Icerik';
 
 const Stack = createNativeStackNavigator();
 export default function App(){
@@ -18,6 +20,8 @@ export default function App(){
       <Stack.Screen name = "Login" component={Login} options={{headerShown:false}}/>
         <Stack.Screen name = "Home" component={Home} options={{headerShown:false}}/>
         <Stack.Screen name="Signup" component={Signup} options={{headerShown:false}}/>
+        <Stack.Screen name="Hizmetler" component={Hizmetler} options={{headerShown:false}}/>
+        <Stack.Screen name="Icerik" component={Icerik} options={{headerShown:false}}/>
      </Stack.Navigator>
      </NavigationContainer>
   );
