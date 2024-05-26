@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "552905231381",
+    "project_id": "zumraewl",
+    "storage_bucket": "zumraewl.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:552905231381:android:d77cdf04a1b5892ec1121c",
+        "android_client_info": {
+          "package_name": "com.awesomeproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCF7WUsb43iZoU-jglOfU4pSX9jVAESJt0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

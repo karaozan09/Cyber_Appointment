@@ -10,6 +10,10 @@ const Home = ({navigation}) => {
     navigation.navigate('Hizmetler');
 }
 
+  function profil(){
+    navigation.navigate('Profil');
+  }
+
   // const [input , setInput] = useState("");
   // function handleNameInput (val){
   //    console.log('got values', input);
@@ -37,8 +41,8 @@ const Home = ({navigation}) => {
        </View>
        <View style={styles.altview}>
        <Image resizeMode="stretch" source={require('../assets/images/butonlar.png')} style={styles.img2}/>
-       <TouchableOpacity><Text style={{paddingLeft:55, position: 'absolute', bottom: 25, fontSize: 25,color:'white'}}>Geri</Text></TouchableOpacity>
-       <TouchableOpacity><Text style={{paddingLeft:310, position: 'absolute', bottom: 20, fontSize: 25,color:'white'}}>Profil</Text></TouchableOpacity>
+       <TouchableOpacity><Text style={{ left:50,position: 'absolute', bottom: 25, fontSize: 25,color:'white', width:100}} onPress={()=>{navigation.goBack()}}>Çıkış</Text></TouchableOpacity>
+       <TouchableOpacity><Text style={{ position: 'absolute', bottom: 20,right:15, fontSize: 25,color:'white', width:100}} onPress={()=>{profil()}}>Profil</Text></TouchableOpacity>
         </View>
     </SafeAreaView>
   );
@@ -94,9 +98,11 @@ const styles = StyleSheet.create({
       paddingBottom:60,
   },
   altview:{
-    height:winWidth * 0.5,
+    height:winWidth ,
       flex:1,
       justifyContent:'flex-end',
+ 
+      
   },
   img2:{
     width:winWidth,
@@ -104,6 +110,7 @@ const styles = StyleSheet.create({
       height:winWidth * 0.4,
       alignItems:'center',
       alignSelf:'center',
+   
 
   },
   img3:{

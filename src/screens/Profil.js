@@ -6,14 +6,11 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 const winWidth = Dimensions.get('window').width;
 const winHeight = Dimensions.get('window').height;
 
+const Profil = ({navigation}) => {
 
-const Hizmtler = ({navigation}) => {
-  function icerik (){
-    navigation.navigate('Icerik');
-}
-  function profil(){
-    navigation.navigate('Profil');
-  }
+    function duzenle(){
+      navigation.navigate('Duzenle');
+    }
 
   return (
     <SafeAreaView style={styles.continer}>
@@ -26,24 +23,23 @@ const Hizmtler = ({navigation}) => {
     </View>
     <View style={styles.viewucgen}>
     <Image  source={require('../assets/images/mobilresim2.png')} style={styles.img3}/><Text style={{fontSize: 40, color: 'white'}}>Burada gizli bir text saklanmıştır çünkü ben bir cyber security expertim ihihi</Text>
-    <Text style={{fontSize: 25, position: 'absolute', bottom: 15, color: 'white'}}>Hizmetler</Text>
+    <Text style={{fontSize: 25, position: 'absolute', bottom: 15, color: 'white'}}>Profilim</Text>
     </View>
     <View style={styles.vieworta}>
-    <TouchableOpacity style={styles.hizmetler1} onPress={()=>{icerik()}}><Text style={styles.hizmetler2}>Hizmet 1</Text><Text style={styles.hizmetler3}> özellikleridsfkailjksd</Text></TouchableOpacity>
-    <TouchableOpacity style={styles.hizmetler1} onPress={()=>{icerik()}}><Text style={styles.hizmetler2}>Hizmet 2</Text><Text style={styles.hizmetler3}> özellikleridsfkailjksd</Text></TouchableOpacity>
-    <TouchableOpacity style={styles.hizmetler1} onPress={()=>{icerik()}}><Text style={styles.hizmetler2}>Hizmet 3</Text><Text style={styles.hizmetler3}> özellikleridsfkailjksd</Text></TouchableOpacity>
-    <TouchableOpacity style={styles.hizmetler1} onPress={()=>{icerik()}}><Text style={styles.hizmetler2}>Hizmet 4</Text><Text style={styles.hizmetler3}> özellikleridsfkailjksd</Text></TouchableOpacity>
-    <TouchableOpacity style={styles.hizmetler1} onPress={()=>{icerik()}}><Text style={styles.hizmetler2}>Hizmet 5</Text><Text style={styles.hizmetler3}> özellikleridsfkailjksd</Text></TouchableOpacity>
+
+    <Text>Bilgiler</Text>
+
     </View>
     <View style={styles.altview}>
     <Image resizeMode="stretch" source={require('../assets/images/butonlar.png')} style={styles.img2}/>
-    <TouchableOpacity><Text style={{ left:50,position: 'absolute', bottom: 25, fontSize: 25,color:'white', width:100}} onPress={()=>{navigation.goBack()}}>Geri</Text></TouchableOpacity>
-       <TouchableOpacity><Text style={{ position: 'absolute', bottom: 20,right:15, fontSize: 25,color:'white', width:100}} onPress={()=>{profil()}}>Profil</Text></TouchableOpacity>
+    <TouchableOpacity><Text style={{ left:50,position: 'absolute', bottom: 25, fontSize: 25,color:'white', width:100}} onPress={()=>{navigation.goBack()}}>Çıkış</Text></TouchableOpacity>
+       <TouchableOpacity><Text style={{ position: 'absolute', bottom: 20,right:15, fontSize: 25,color:'white', width:100}} onPress={()=>{duzenle()}}>Profil</Text></TouchableOpacity>
      </View>
  </SafeAreaView>
-);
+  );
 };
-export default Hizmtler;
+
+export default Profil;
 
 const styles = StyleSheet.create({
     continer:{
@@ -114,22 +110,21 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent:'center',
       },
-      hizmetler1:{
+      şirketler1:{
         padding:10,
       },
-      hizmetler2:{
+      şirketler2:{
         fontSize: 20,
         textAlign:'left',
         color: 'purple',
         fontWeight:'bold',
         backgroundColor:'#E8C6F4',
       },
-      hizmetler3:{
+      şirketler3:{
         fontSize: 15,
         textAlign:'left',
         color: 'black',
         backgroundColor:'#E8C6F4',
         padding:10,
       },
-    
 });
