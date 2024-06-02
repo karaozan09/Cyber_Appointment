@@ -48,8 +48,8 @@ export default function App(){
         <Stack.Screen name="Duzenle" component={Duzenle} options={{headerShown:false}}/>
      </Stack.Navigator>
      </NavigationContainer>
-     <Button title='signin' onPress={giris}/>
-     <Button title='signup' onPress={kayit}/>
+     {/* <Button title='signin' onPress={giris}/>
+     <Button title='signup' onPress={kayit}/> */}
 
      </SafeAreaView>
   );

@@ -2,6 +2,8 @@
 import { Dimensions, Image, StyleSheet, Text, View, TextInput, Alert, TouchableOpacity } from 'react-native';
 import React,{useState} from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import firebase from '@react-native-firebase/app';
+import auth from '@react-native-firebase/auth';
 
 
 
@@ -17,11 +19,16 @@ const Login = ({navigation}) => {
 
 
   function login (){
+    // auth().signInWithEmailAndPassword('zumra@example.com',
+    // 'supersecretpassword',)
+    // .then(res => console.log(res))
+    // .catch(err => console.log(err));
+
     if (email === emaill && password === pasword){
       navigation.navigate('Home');
     }
     else {
-      navigation.navigate('Home');
+      Alert.alert('Hatalı Giris');
     }
   }
 

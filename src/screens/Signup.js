@@ -13,9 +13,23 @@ const winHeight = Dimensions.get("window").height;
 
 
 const Signup = ({navigation}) => {
+  // const kayit = () => {
+  //   auth().createUserWithEmailAndPassword(
+  //     'zumra@example.com',
+  //      'supersecretpassword',
+  //     )
+  //     .then(res => console.log(res))
+  //     .catch(err => console.log(err));
+  // };
+
 
   function signup () {
-    navigation.navigate('Login');
+    // auth().createUserWithEmailAndPassword(
+    //   'muhammed@gmail',
+    //   'gizlişifre123',
+    // )
+    // .then(res =>  navigation.navigate('Login'))
+    // .catch(err => console.log(err));
   }
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
