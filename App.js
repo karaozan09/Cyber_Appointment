@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { StyleSheet, Text, View, Button} from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {NavigationContainer} from '@react-navigation/native';
 import firebase from '@react-native-firebase/app';
@@ -18,27 +18,27 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 const Stack = createNativeStackNavigator();
 export default function App(){
-  const kayit = () => {
-    auth().createUserWithEmailAndPassword(
-      'zumra@example.com',
-       'supersecretpassword',
-      )
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-  };
+ // Set an initializing state whilst Firebase connects
+ const [initializing, setInitializing] = useState(true);
+ const [user, setUser] = useState();
 
-  const giris = () => {
-    auth().signInWithEmailAndPassword(
-      'zumra@example.com',
-       'supersecretpassword',
-      )
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-  };
-  return (
-    <SafeAreaView>
+ // Handle user state changes
+ const onAuthStateChanged =(user) =>{
+   setUser(user);
+   if (initializing) setInitializing(false);
+ }
+
+ useEffect(() => {
+   const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+   return subscriber; // unsubscribe on unmount
+ }, []);
+
+ if (initializing) return null;
+ console.log('user info in app' , user?.email)
+
+  return ( 
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName={user?.email? 'Home' : 'Login'}>
       <Stack.Screen name = "Login" component={Login} options={{headerShown:false}}/>
         <Stack.Screen name = "Home" component={Home} options={{headerShown:false}}/>
         <Stack.Screen name="Signup" component={Signup} options={{headerShown:false}}/>
@@ -48,10 +48,8 @@ export default function App(){
         <Stack.Screen name="Duzenle" component={Duzenle} options={{headerShown:false}}/>
      </Stack.Navigator>
      </NavigationContainer>
-     {/* <Button title='signin' onPress={giris}/>
-     <Button title='signup' onPress={kayit}/> */}
+   
 
-     </SafeAreaView>
   );
 }
 

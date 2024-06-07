@@ -1,16 +1,58 @@
 /* eslint-disable prettier/prettier */
-import { Dimensions, Image, StyleSheet, Text, TextInput, View , Button, TouchableOpacity, Alert } from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, TextInput, View , Button, TouchableOpacity, Alert, FlatList } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Hizmtler from './Hizmetler';
 
 const winWidth = Dimensions.get('window').width;
 const winHeight = Dimensions.get('window').height;
 
-const Icerik = ({navigation}) => {
-  function randevu(){
-    Alert.alert('Randevu Alındı');
+const Icerik = (props) => {
+  const{navigation,route} = props;
+  const {icerikData} = route?.params; 
+  console.log('icerikData',icerikData)
+ 
+  const [selectedIndex,setSelectedIndex ] = useState(-1); 
+const [selectedClock ,setSelecetedClock] =useState({});  
+
+  const chooseClock = (saat,index)=>{
+    console.log('selected index',index)
+    setSelectedIndex(index)
+    setSelecetedClock(saat)
+    
+    
+    
 
   }
+  const randevu = ()=>{
+
+    Alert.alert('Seçilen Randevu Saati',JSON.stringify(selectedClock));
+    
+
+  }
+
+  const RenderItem = ({item})=>{
+
+    return (
+       <View >
+          <Text> 
+            {item.tarih}
+          </Text>
+          {
+            item.saatler.map((saat,index)=>{
+              return(
+                 <TouchableOpacity  key={index} onPress={()=>chooseClock(saat,index)}   style={{width:winWidth * 0.25, height:winHeight * 0.05, backgroundColor:selectedIndex == index? '#333333': '#E8C6F4', alignItems:'center', justifyContent:'center', margin:5, borderRadius:2}}  >
+                 <Text style={{color:'black', fontWeight:'bold'}}> {saat}</Text>
+                  </TouchableOpacity>
+              )
+              
+            })
+          }
+       </View>
+    )
+  }
+
+   
   return (
     <SafeAreaView style={styles.continer}>
     <View style={styles.view1}>
@@ -25,8 +67,19 @@ const Icerik = ({navigation}) => {
     <Text style={{fontSize: 25, position: 'absolute', bottom: 15, color: 'white'}}>İçerik</Text>
     </View>
     <View style={styles.vieworta}>
+     {/** content starts here */}
+      
+      <Text>{icerikData.hizmetAdi} </Text>
+      
+      <Text>{icerikData.fiyat} </Text>
+      <Text>{icerikData.icerik} </Text>
+      <Text> uygunluk Saatleri </Text>
 
-    <Text>Bilgiler</Text>
+      <FlatList
+        data={icerikData?.uygunlukTarihleri}
+        renderItem={({item}) =>  <RenderItem item={item} /> }
+      keyExtractor={(item, index) => index.toString()}
+       />
 
     </View>
     <View style={styles.altview}>

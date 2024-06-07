@@ -1,13 +1,15 @@
 /* eslint-disable prettier/prettier */
-import { Dimensions, Image, StyleSheet, Text, TextInput, View , Button, TouchableOpacity } from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, TextInput, View , Button, TouchableOpacity, FlatList } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { data } from '../data/data';
 
 const winWidth = Dimensions.get('window').width;
 const winHeight = Dimensions.get('window').height;
 const Home = ({navigation}) => {
-  function hizmet (){
-    navigation.navigate('Hizmetler');
+  function hizmet (item){
+   
+    navigation.navigate('Hizmetler',{hizmetlerdata:item});
 }
 
   function profil(){
@@ -33,12 +35,20 @@ const Home = ({navigation}) => {
        <Text style={{fontSize: 25, position: 'absolute', bottom: 15, color: 'white'}}>Şirketler</Text>
        </View>
        <View style={styles.vieworta}>
-       <TouchableOpacity style={styles.şirketler1} onPress={()=>{hizmet()}}><Text style={styles.şirketler2}>Şirket 1</Text><Text style={styles.şirketler3}> özellikleridsfkailjksd</Text></TouchableOpacity>
-       <TouchableOpacity style={styles.şirketler1} onPress={()=>{hizmet()}}><Text style={styles.şirketler2}>Şirket 1</Text><Text style={styles.şirketler3}> özellikleridsfkailjksd</Text></TouchableOpacity>
-       <TouchableOpacity style={styles.şirketler1} onPress={()=>{hizmet()}}><Text style={styles.şirketler2}>Şirket 1</Text><Text style={styles.şirketler3}> özellikleridsfkailjksd</Text></TouchableOpacity>
-       <TouchableOpacity style={styles.şirketler1} onPress={()=>{hizmet()}}><Text style={styles.şirketler2}>Şirket 1</Text><Text style={styles.şirketler3}> özellikleridsfkailjksd</Text></TouchableOpacity>
-       <TouchableOpacity style={styles.şirketler1} onPress={()=>{hizmet()}}><Text style={styles.şirketler2}>Şirket 1</Text><Text style={styles.şirketler3}> özellikleridsfkailjksd</Text></TouchableOpacity>
-       </View>
+       {/** company list */}
+       <FlatList 
+ data={ data}
+ renderItem={({item}) =>(
+  <TouchableOpacity style={styles.şirketler1} onPress={()=>{hizmet( item)}}>
+  <Text style={styles.şirketler2}>{item.name}</Text>
+  <Text style={styles.şirketler3}> {item.hakkında}</Text>
+  </TouchableOpacity>
+ )}
+
+       />
+
+</View>
+     
        <View style={styles.altview}>
        <Image resizeMode="stretch" source={require('../assets/images/butonlar.png')} style={styles.img2}/>
        <TouchableOpacity><Text style={{ left:50,position: 'absolute', bottom: 25, fontSize: 25,color:'white', width:100}} onPress={()=>{navigation.goBack()}}>Çıkış</Text></TouchableOpacity>

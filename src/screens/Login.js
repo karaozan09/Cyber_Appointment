@@ -12,29 +12,37 @@ const winHeight = Dimensions.get('window').height;
 
 
 const Login = ({navigation}) => {
-  const pasword = '123';
-  const emaill = 'busra';
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-
-  function login (){
-    // auth().signInWithEmailAndPassword('zumra@example.com',
-    // 'supersecretpassword',)
-    // .then(res => console.log(res))
-    // .catch(err => console.log(err));
-
-    if (email === emaill && password === pasword){
-      navigation.navigate('Home');
-    }
-    else {
-      Alert.alert('Hatalı Giris');
-    }
-  }
-
-  function signup (){
+  const kayit = () => {
     navigation.navigate('Signup');
-  }
+  };
+
+  const giris = () => {
+    if(email.length == 0 || password.length == 0){
+       return;
+    }
+    auth().signInWithEmailAndPassword(
+      email,
+       password,
+      )
+      .then((res)=>{
+        if(res.user.uid){
+          navigation.navigate('Home')
+          setEmail('')
+          setPassword('')
+        }else{
+          console.log('email is not verified')
+        }
+      }
+   
+      )
+      .catch(err => console.log(err));
+  };
+
+
 
 
   return (
@@ -53,7 +61,7 @@ const Login = ({navigation}) => {
         style={styles.text_title2}
         placeholder="Email adresinizi girin"
         value={email}
-        onChangeText={setEmail}
+        onChangeText={(val)=> setEmail(val)}
         keyboardType="email-address"
         autoCapitalize="none"
       />
@@ -61,13 +69,13 @@ const Login = ({navigation}) => {
       style={styles.text_title2}
               placeholder="Şifrenizi girin"
               value={password}
-              onChangeText={setPassword}
+              onChangeText={(val)=> setPassword(val)}
               secureTextEntry
       />
     {/* <Button title="Giriş Yap" onPress={() => {login()}} style={styles}/> */}
-    <TouchableOpacity style={styles.buton} onPress={()=>{login()}}><Text style={styles.butontext}>Giriş Yap</Text></TouchableOpacity>
+    <TouchableOpacity style={styles.buton} onPress={giris}><Text style={styles.butontext}>Giriş Yap</Text></TouchableOpacity>
     {/* <Button title ="Kayıt Ol" onPress={() => {signup()}} /> */}
-    <TouchableOpacity style={styles.buton} onPress={() => {signup()}}><Text style={styles.butontext}>Kayıt Ol</Text></TouchableOpacity>
+    <TouchableOpacity style={styles.buton} onPress={kayit}><Text style={styles.butontext}>Kayıt Ol</Text></TouchableOpacity>
     </View>
 
     <View style={styles.altview}>

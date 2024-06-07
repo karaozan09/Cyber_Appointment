@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Dimensions, Image, StyleSheet, Text, View,Button,TextInput, TouchableOpacity } from 'react-native'
 import React, {useState} from 'react'
-// import { auth } from '@react-native-firebase/auth';
+ import  auth  from '@react-native-firebase/auth';
 // import firestore from '@react-native-firebase/firestore';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -13,61 +13,36 @@ const winHeight = Dimensions.get("window").height;
 
 
 const Signup = ({navigation}) => {
-  // const kayit = () => {
-  //   auth().createUserWithEmailAndPassword(
-  //     'zumra@example.com',
-  //      'supersecretpassword',
-  //     )
-  //     .then(res => console.log(res))
-  //     .catch(err => console.log(err));
-  // };
+  const kayit = () => {
+if(email.length === 0 || password.length===0){
+  return ;
+}
+
+    auth().createUserWithEmailAndPassword(
+      email,
+       password
+      )
+      .then(res => {
+        console.log('res in sigup', res);
+        //create object for database add other states , save database
+        if(res.user.uid){
+          navigation.navigate('Login');
+        }else{
+          console.log('email is not verified')
+        }
+       
+
+      })
+      .catch(err => console.log(err));
+  };
 
 
-  function signup () {
-    // auth().createUserWithEmailAndPassword(
-    //   'muhammed@gmail',
-    //   'gizlişifre123',
-    // )
-    // .then(res =>  navigation.navigate('Login'))
-    // .catch(err => console.log(err));
-  }
+
+
     const [email, setEmail] = useState('');
+    const [address, setAddress] = useState('');
+    const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
-
-    //KULLANICI İŞLEMLERİ YAPILACAK
-// const handleSignUp = () => {
-//     auth()
-//       .createUserWithEmailAndPassword(email, password)
-//       .then((userCredential) => {
-//         // Kullanıcı başarıyla oluşturuldu
-//         const user = userCredential.user;
-//         console.log('Kullanıcı oluşturuldu:', user.uid);
-//       })
-//       .catch((error) => {
-//         console.error('Kullanıcı oluşturulamadı:', error);
-//       });
-//   };
-
-  // const addUserToFirestore = (userId, email, password) => {
-  //   firestore()
-  //     .collection('users')
-  //     .doc(userId)
-  //     .set({
-  //       email: email,
-  //       password: password,
-  //       // Diğer kullanıcı bilgilerini buraya ekleyebilirsiniz
-  //     })
-  //     .then(() => {
-  //       console.log('Kullanıcı verileri Firestore\'a eklendi');
-  //     })
-  //     .catch((error) => {
-  //       console.error('Kullanıcı verileri eklenemedi:', error);
-  //     });
-  // };
-
-
-  // <Button title="Üye Ol" onPress={handleSignUp}textStyle={styles.loginButtonText}/>;
-
 
   return (
     <SafeAreaView style={styles.continer}>
@@ -85,36 +60,36 @@ const Signup = ({navigation}) => {
         style={styles.text_title2}
         placeholder="Email adresinizi girin"
         value={email}
-        onChangeText={setEmail}
+        onChangeText={(val)=> setEmail(val)}
         keyboardType="email-address"
         autoCapitalize="none"
       />
        <TextInput
         style={styles.text_title2}
         placeholder="Telefon numaranızı girin"
-        value={email}
-        onChangeText={setEmail}
+        value={phone}
+        onChangeText={(val)=>setPhone(val) }
         keyboardType="Phone"
         autoCapitalize="none"
       />
        <TextInput
         style={styles.text_title2}
         placeholder="Adresinizi girin"
-        value={email}
-        onChangeText={setEmail}
+        value={address}
+        onChangeText={(val)=> setAddress(val)}
         autoCapitalize="none"
       />
       <TextInput
       style={styles.text_title2}
               placeholder="Şifrenizi girin"
               value={password}
-              onChangeText={setPassword}
+              onChangeText= {(val)=> setPassword(val) }
               secureTextEntry
       />
     {/* <Button title="Giriş Yap" onPress={() => {login()}} style={styles}/> */}
     <TouchableOpacity style={styles.buton} onPress={()=>{navigation.goBack}}><Text style={styles.butontext}>Çıkış</Text></TouchableOpacity>
     {/* <Button title ="Kayıt Ol" onPress={() => {signup()}} /> */}
-    <TouchableOpacity style={styles.buton} onPress={() => {signup()}}><Text style={styles.butontext}>Kayıt Ol</Text></TouchableOpacity>
+    <TouchableOpacity style={styles.buton} onPress={kayit}><Text style={styles.butontext}>Kayıt Ol</Text></TouchableOpacity>
     </View>
 
     <View style={styles.altview}>
