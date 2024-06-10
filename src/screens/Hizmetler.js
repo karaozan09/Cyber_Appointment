@@ -190,10 +190,12 @@ const styles = StyleSheet.create({
   },
   hizmetler1: {
     padding: 10,
+    margin:10,
   },
   hizmetler2: {
-    fontSize: 20,
-    textAlign: 'left',
+    fontSize: 25,
+    height:winWidth * 0.13,
+    textAlign: 'center',
     color: 'purple',
     fontWeight: 'bold',
     backgroundColor: '#E8C6F4',

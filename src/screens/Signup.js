@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { Dimensions, Image, StyleSheet, Text, View,Button,TextInput, TouchableOpacity } from 'react-native'
-import React, {useState} from 'react'
+import { Dimensions, Image, StyleSheet, Text, View,Button,TextInput, TouchableOpacity } from 'react-native';
+import React, {useState} from 'react';
  import  auth  from '@react-native-firebase/auth';
 // import firestore from '@react-native-firebase/firestore';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -140,7 +140,7 @@ text_title2:{
  width: '100%',
  height: 50,
  borderColor: '#771DA1',
- color:'pink',
+ color:'black',
  borderWidth: 2,
  marginBottom: 10,
  paddingHorizontal: 10,

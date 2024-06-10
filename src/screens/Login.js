@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
      width: '100%',
      height: 50,
      borderColor: '#771DA1',
-     color:'pink',
+     color:'black',
      borderWidth: 2,
      marginBottom: 10,
      paddingHorizontal: 10,

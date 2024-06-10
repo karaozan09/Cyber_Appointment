@@ -2,6 +2,7 @@
 import { Dimensions, Image, StyleSheet, Text, TextInput, View , Button, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { getValue } from 'firebase/remote-config';
 
 const winWidth = Dimensions.get('window').width;
 const winHeight = Dimensions.get('window').height;
@@ -27,7 +28,10 @@ const Profil = ({navigation}) => {
     </View>
     <View style={styles.vieworta}>
 
-    <Text>Bilgiler</Text>
+    <Text style={styles.txt}>Mail Adresi: {getValue('mail')} </Text>
+    <Text style={styles.txt}>Telefon: {getValue('telefon')} </Text>
+    <Text style={styles.txt}>Adres: {getValue('adres')} </Text>
+    <Text style={styles.txt}>Randevularım  {getValue('randevu')}</Text>
 
     </View>
     <View style={styles.altview}>
@@ -86,6 +90,14 @@ const styles = StyleSheet.create({
           padding:20,
           margin:20,
           paddingBottom:60,
+      },
+      txt:{
+        fontSize: 20,
+          textAlign:'left',
+          color:'#771DA1',
+          fontWeight:'bold',
+          marginBottom:10,
+          marginTop:10,
       },
       altview:{
         height:winWidth * 0.5,

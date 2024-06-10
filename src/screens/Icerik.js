@@ -69,13 +69,13 @@ const [selectedClock ,setSelecetedClock] =useState({});
     <View style={styles.vieworta}>
      {/** content starts here */}
       
-      <Text>{icerikData.hizmetAdi} </Text>
+      <Text style={styles.txt}>Hizmet: {icerikData.hizmetAdi} </Text>
       
-      <Text>{icerikData.fiyat} </Text>
-      <Text>{icerikData.icerik} </Text>
-      <Text> uygunluk Saatleri </Text>
+      <Text style={styles.txt}>Fiyat: {icerikData.fiyat} </Text>
+      <Text style={styles.txt}>Hizmet İçeriği: {icerikData.icerik} </Text>
+      <Text style={styles.txt}>Uygunluk Saatleri:  </Text>
 
-      <FlatList
+      <FlatList 
         data={icerikData?.uygunlukTarihleri}
         renderItem={({item}) =>  <RenderItem item={item} /> }
       keyExtractor={(item, index) => index.toString()}
@@ -138,6 +138,13 @@ const styles = StyleSheet.create({
         padding:20,
         margin:20,
         paddingBottom:60,
+    },
+    txt:{
+      fontSize:20,
+        textAlign:'left',
+        margin:5,
+        color:'black',
+        fontWeight:'bold',
     },
     altview:{
       height:winWidth * 0.5,

@@ -12,8 +12,11 @@ const Home = ({navigation}) => {
     navigation.navigate('Hizmetler',{hizmetlerdata:item});
 }
 
-  function profil(){
+  function profil({navigate}){
     navigation.navigate('Profil');
+  }
+  function goBack(){
+    navigation.navigate('Login');
   }
 
   // const [input , setInput] = useState("");
@@ -51,7 +54,7 @@ const Home = ({navigation}) => {
      
        <View style={styles.altview}>
        <Image resizeMode="stretch" source={require('../assets/images/butonlar.png')} style={styles.img2}/>
-       <TouchableOpacity><Text style={{ left:50,position: 'absolute', bottom: 25, fontSize: 25,color:'white', width:100}} onPress={()=>{navigation.goBack()}}>Çıkış</Text></TouchableOpacity>
+       <TouchableOpacity><Text style={{ left:50,position: 'absolute', bottom: 25, fontSize: 25,color:'white', width:100}} onPress={()=>{goBack()}}>Çıkış</Text></TouchableOpacity>
        <TouchableOpacity><Text style={{ position: 'absolute', bottom: 20,right:15, fontSize: 25,color:'white', width:100}} onPress={()=>{profil()}}>Profil</Text></TouchableOpacity>
         </View>
     </SafeAreaView>
